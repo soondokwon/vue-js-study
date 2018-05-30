@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Keyboard Event</title>
+    <script src="https://unpkg.com/vue"></script>
+    <style>
+        #canvas {
+            background-color: darkgreen;
+            width: 400px;
+            padding: 200px 20px;
+            text-align: center;
+            border: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+    <div id="vue-app" style="background-color: goldenrod; width: 50%; padding: 10px;">
+        <h1>Keyboard Event</h1>
+        <p>
+            <label>Name : </label>
+            <input type="text" v-on:keyup="logName" />
+        </p>
+        <p>
+            <label>Age : </label>
+            <input type="text" v-on:keyup="logAge" />
+        </p>
+        <!--
+        https://kr.vuejs.org/v2/guide/events.html
+        .enter
+        .tab : keydown에서 작동됨.
+        .delete (“Delete” 와 “Backspace” 키 모두를 캡처합니다)
+        .esc
+        .space
+        .up
+        .down
+        .left
+        .right
+
+        .ctrl
+        .alt
+        .shift
+        .meta        
+        -->
+        <p>
+            <label>Name(enter) : </label>
+            <input type="text" v-on:keyup.enter="logName" />
+        </p>
+        <p>
+            <label>Name(alt+enter) : </label>
+            <input type="text" v-on:keyup.alt.enter="logName" />
+        </p>            
+        <p>
+            <label>Age(enter) : </label>
+            <input type="text" v-on:keyup.enter="logAge" />
+        </p>
+        <p>
+            <label>Name(tab) : </label>
+            <input type="text" v-on:keydown.tab="logName" />
+        </p>
+        <p>
+            <label>Age(tab) : </label>
+            <input type="text" v-on:keydown.tab="logAge" />
+        </p>        
+    
+    </div>
+</body>
+</html>
+<script>
+new Vue({
+    el: '#vue-app',
+    data: {
+    },
+    methods: {
+        logName: function() {
+            console.log('Your name');
+        },
+        logAge: function() {
+            console.log('Your age');
+        },        
+    }
+});    
+</script>

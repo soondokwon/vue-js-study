@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Data Binding</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <div id="vue-app" style="background-color: goldenrod; width: 50%; padding: 10px;">
+        <h1>{{greet('afternoon')}}</h1>
+        <p>Name : {{name}}</p>
+        <p>Job : {{job}}</p>
+        <!-- v-bind를 사용해서 html 속성값에 data의 내용을 연결한다. -->
+        <p>My office : <a v-bind:href="companyUrl" v-bind:style="myStyle">Obigo</a></p>
+        <p>name : <input type="text" v-bind:value="name" /></p>
+        <p>job : <input type="text" v-bind:value="job" /></p>
+        {{companyUrlTag}}
+        <p v-html="companyUrlTag"></p><!-- p tag에 value를 넣는다. -->
+        <button v-html="btnCaption"></button>
+    </div>
+    <script src="03app.js"></script>
+</body>
+</html>

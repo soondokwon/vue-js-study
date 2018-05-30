@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Event Modifiers</title>
+    <script src="https://unpkg.com/vue"></script>
+    <style>
+        #canvas {
+            background-color: darkgreen;
+            width: 400px;
+            padding: 200px 20px;
+            text-align: center;
+            border: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+    <div id="vue-app" style="background-color: goldenrod; width: 50%; padding: 10px;">
+        <h1>Event Modifiers</h1>
+        <p>{{msg()}}</p>
+        <button v-on:click.once="add()">Year++(한번만)</button>
+        <button v-on:click="add()">Year++</button>
+        <button v-on:click="subtract()">Year--</button>
+        <button v-on:dblclick="add(10)">Add 10 Year</button>
+        <button v-on:dblclick="subtract(10)">Sustract 10 Year</button>
+        <p>My age is {{age}}</p>
+        <div id="canvas" v-on:mousemove="updateXY($event)">{{x}}, {{y}}</div>
+        <a @click="click" href="http://www.obigo.com">오비고</a>
+        <a @click.prevent="click" href="http://www.obigo.com">오비고(prevent)</a>
+    </div>
+</body>
+</html>
+<script>
+new Vue({
+    el: '#vue-app',
+    data: {
+        age: 25,
+        x: 0,
+        y: 0,
+    },
+    methods: {
+        add: function(arg = 1) {
+            //this.age++
+            this.age += arg;
+        },
+        subtract: function(arg = 1) {
+            //this.age--
+            this.age -= arg;
+        },
+        msg: function() {
+            return "Hello World!!!!";
+        },
+        updateXY: function(e) {
+            console.log("updateXY() -> e=", e);
+            this.x = e.offsetX;
+            this.y = e.offsetY;
+        },
+        click: function() {
+            alert("clicked...");
+        },
+    }
+});    
+</script>
