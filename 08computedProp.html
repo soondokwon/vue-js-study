@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Computed Properties</title>
+    <!-- <script src="https://unpkg.com/vue"></script> -->
+    <script src="vue.js"></script>
+    <style>
+        #canvas {
+            background-color: darkgreen;
+            width: 400px;
+            padding: 200px 20px;
+            text-align: center;
+            border: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+    <div id="vue-app" style="background-color: goldenrod; width: 50%; padding: 10px;">
+        <h1>Computed Properties</h1>
+        <button v-on:click="a++">Add to A</button>
+        <button v-on:click="b++">Add to B</button>
+        <p>A - {{ a }}</p>
+        <p>B - {{ b }}</p>
+        <p>Age + A = {{ addToA() }}</p>
+        <p>Age + B = {{ addToB() }}</p>
+        <p>Age + A = {{ AddToA }}(computed)</p>
+        <p>Age + B = {{ AddToB }}(computed)</p>
+    </div>
+</body>
+</html>
+<script>
+new Vue({
+    el: '#vue-app',
+    data: { // 예약 key : data - 페이지 변수
+        age: 20,
+        a: 0,
+        b: 0,
+    },
+    methods: { // 예약 key : methods - 함수와 이벤트 핸들러
+        addToA: function() {
+            return this.age + this.a;
+        },
+        addToB: function() {
+            return this.age + this.b;
+        },
+    },
+    computed: { // 예약 key
+        AddToA: function() {
+            return this.age + this.a;
+        },
+        AddToB: function() {
+            return this.age + this.b;
+        },
+    }
+});
+</script>
